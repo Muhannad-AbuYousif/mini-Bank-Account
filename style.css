@@ -1,0 +1,985 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:#f4f6f9;
+  height:100vh;
+  padding:30px;
+}
+
+.app-title{
+  background:#1e3a8a;
+  color:white;
+
+  padding:20px 30px;
+  border-radius:12px;
+
+  font-size:32px;
+  font-weight:bold;
+
+  margin-bottom:20px;
+
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.container{
+  display:flex;
+  gap:25px;
+  height:85vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:280px;
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 0 10px rgba(0,0,0,0.08);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.sidebar h2{
+  margin-bottom:20px;
+  color:#333;
+}
+
+.accounts{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.account{
+  padding:14px;
+  background:#f1f5f9;
+
+  border:1px solid #dbe3ee;
+
+  border-radius:8px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  transition:0.2s;
+}
+
+.account:hover{
+  background:#e8eefc;
+}
+
+.delete-btn{
+  border:1px solid #dc2626;
+
+  background:white;
+
+  color:#dc2626;
+
+  padding:8px 16px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+  font-size:13px;
+  font-weight:600;
+
+  letter-spacing:0.3px;
+
+  transition:all 0.25s ease;
+
+  box-shadow:
+  0 2px 6px rgba(220,38,38,0.08);
+}
+
+.delete-btn:hover{
+  background:#dc2626;
+
+  color:white;
+
+  box-shadow:
+  0 6px 14px rgba(220,38,38,0.18);
+}
+
+.delete-btn:active{
+  transform:scale(0.97);
+}
+
+.create-btn{
+  margin-top:20px;
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:8px;
+  background:#1e3a8a;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.create-btn:hover{
+  background:#1e40af;
+}
+
+/* MAIN */
+
+.main{
+  flex:1;
+  background:white;
+  border-radius:12px;
+  padding:30px;
+  box-shadow:0 0 10px rgba(0,0,0,0.08);
+
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+.current-account h2{
+  color:#333;
+  margin-bottom:10px;
+}
+
+.balance-box{
+  background:#f1f5f9;
+  padding:25px;
+  border-radius:10px;
+}
+
+.balance-box h1{
+  font-size:42px;
+  color:#111827;
+}
+
+/* ACTIONS */
+
+.actions{
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.actions input{
+  flex:1;
+  padding:14px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
+  outline:none;
+}
+
+.deposit-btn,
+.withdraw-btn{
+  padding:14px 20px;
+  border:none;
+  border-radius:8px;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+  transition:0.3s;
+}
+
+.deposit-btn{
+  background:#16a34a;
+}
+
+.deposit-btn:hover{
+  background:#15803d;
+}
+
+.withdraw-btn{
+  background:#dc2626;
+}
+
+.withdraw-btn:hover{
+  background:#b91c1c;
+}
+
+/* TRANSACTIONS */
+
+.transactions{
+  flex:1;
+  overflow:auto;
+}
+
+.transactions h2{
+  margin-bottom:20px;
+  color:#333;
+}
+
+.transaction{
+  display:flex;
+  justify-content:space-between;
+  padding:16px;
+  background:#f8fafc;
+  border-radius:8px;
+  margin-bottom:12px;
+}
+
+.deposit-transaction{
+  color:#16a34a;
+  font-weight:bold;
+}
+
+.withdraw-transaction{
+  color:#dc2626;
+  font-weight:bold;
+}
+
+/* MODAL */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal{
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 9999;
+
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+}
+.modal h2{
+  margin-bottom:25px;
+  color:#222;
+}
+
+.modal-form{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.modal-form input{
+  padding:14px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:15px;
+  outline:none;
+}
+
+.modal-buttons{
+  display:flex;
+  justify-content:space-between;
+  margin-top:15px;
+}
+
+.back-btn,
+.submit-btn{
+  padding:12px 22px;
+  border:none;
+  border-radius:8px;
+  color:white;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.back-btn{
+  background:#6b7280;
+}
+
+.submit-btn{
+  background:#2563eb;
+}
+.hidden{
+  display:none !important;
+}
+.pageblure{
+  filter: blur(6px);
+}
+.error-box{
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 420px;
+
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  z-index: 99999;
+
+  box-shadow:
+  0 20px 40px rgba(0,0,0,0.15);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 28px;
+
+  border-top: 6px solid #dc2626;
+}
+
+/* زر الإغلاق */
+
+.close-error{
+  position: absolute;
+
+  top: 14px;
+  right: 16px;
+
+  border: none;
+  background: transparent;
+
+  font-size: 24px;
+
+  color: #6b7280;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.close-error:hover{
+  color: #111827;
+  transform: scale(1.1);
+}
+
+/* أيقونة التحذير */
+
+.error-icon{
+  width: 70px;
+  height: 70px;
+
+  border-radius: 50%;
+
+  background: #fee2e2;
+
+  color: #dc2626;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 34px;
+
+  margin: 0 auto;
+}
+
+/* النص */
+
+.error-content{
+  text-align: center;
+}
+
+.error-title{
+  font-size: 24px;
+  font-weight: bold;
+
+  color: #111827;
+
+  margin-bottom: 10px;
+}
+
+.error-text{
+  font-size: 16px;
+
+  color: #6b7280;
+
+  line-height: 1.6;
+}
+
+/* زر OK */
+
+.error-btn{
+  align-self: center;
+
+  padding: 12px 40px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #1e3a8a;
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.error-btn:hover{
+  background: #1e40af;
+
+  transform: translateY(-2px);
+}
+.password-modal{
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 420px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 35px;
+
+  z-index: 99999;
+
+  box-shadow:
+  0 25px 50px rgba(0,0,0,0.18);
+
+  border-top: 6px solid #1e3a8a;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 28px;
+}
+
+/* أيقونة البنك */
+
+.bank-icon{
+  width: 85px;
+  height: 85px;
+
+  margin: 0 auto;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 38px;
+
+  color: #1e3a8a;
+
+  font-weight: bold;
+}
+
+/* النص */
+
+.password-content{
+  text-align: center;
+}
+
+.password-title{
+  font-size: 28px;
+
+  color: #111827;
+
+  margin-bottom: 10px;
+}
+
+.password-text{
+  color: #6b7280;
+
+  font-size: 16px;
+
+  line-height: 1.6;
+}
+
+/* الانبوت */
+
+.password-input{
+  width: 100%;
+
+  padding: 16px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 12px;
+
+  font-size: 16px;
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+.password-input:focus{
+  border-color: #1d4ed8;
+
+  box-shadow:
+  0 0 0 4px rgba(37,99,235,0.15);
+}
+
+/* الأزرار */
+
+.password-buttons{
+  display: flex;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.cancel-btn,
+.login-btn{
+  flex: 1;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.cancel-btn{
+  background: #e5e7eb;
+
+  color: #374151;
+}
+
+.cancel-btn:hover{
+  background: #d1d5db;
+}
+
+.login-btn{
+  background: #1e3a8a;
+
+  color: white;
+}
+
+.login-btn:hover{
+  background: #1e40af;
+
+  transform: translateY(-2px);
+}
+.password-error{
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 420px;
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  z-index: 99999;
+
+  box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+
+  border-top: 6px solid #dc2626;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 22px;
+}
+
+/* أيقونة القفل */
+.password-error-icon{
+  width: 80px;
+  height: 80px;
+
+  border-radius: 50%;
+
+  background: #fee2e2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 36px;
+
+  color: #dc2626;
+
+  font-weight: bold;
+}
+
+/* النص */
+.password-error-title{
+  font-size: 22px;
+
+  font-weight: bold;
+
+  color: #111827;
+
+  text-align: center;
+}
+
+.password-error-text{
+  font-size: 15px;
+
+  color: #6b7280;
+
+  text-align: center;
+
+  line-height: 1.6;
+}
+
+/* زر OK */
+.password-error-btn{
+  padding: 12px 40px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #1e3a8a;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.password-error-btn:hover{
+  background: #1e40af;
+
+  transform: translateY(-2px);
+}
+.account-exists-error{
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 430px;
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  z-index: 99999;
+
+  box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+
+  border-top: 6px solid #f59e0b;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 22px;
+}
+
+/* أيقونة تحذير */
+.account-exists-icon{
+  width: 80px;
+  height: 80px;
+
+  border-radius: 50%;
+
+  background: #fef3c7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 38px;
+
+  color: #d97706;
+
+  font-weight: bold;
+}
+
+/* النص */
+.account-exists-title{
+  font-size: 22px;
+
+  font-weight: bold;
+
+  color: #111827;
+
+  text-align: center;
+}
+
+.account-exists-text{
+  font-size: 15px;
+
+  color: #6b7280;
+
+  text-align: center;
+
+  line-height: 1.6;
+}
+
+/* زر OK */
+.account-exists-btn{
+  padding: 12px 40px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #1e3a8a;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.account-exists-btn:hover{
+  background: #1e40af;
+  transform: translateY(-2px);
+}
+.transaction-error{
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 460px;
+
+  background: #ffffff;
+
+  border-radius: 20px;
+
+  padding: 32px;
+
+  z-index: 99999;
+
+  box-shadow:
+  0 25px 60px rgba(0,0,0,0.18);
+
+  border-top: 6px solid #dc2626;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 24px;
+}
+
+/* أيقونة التحذير */
+
+.transaction-error-icon{
+  width: 85px;
+  height: 85px;
+
+  border-radius: 50%;
+
+  background: #fee2e2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 40px;
+
+  color: #dc2626;
+
+  font-weight: bold;
+}
+
+/* النص */
+
+.transaction-error-title{
+  font-size: 24px;
+
+  font-weight: bold;
+
+  color: #111827;
+
+  text-align: center;
+}
+
+.transaction-error-text{
+  font-size: 15px;
+
+  color: #6b7280;
+
+  text-align: center;
+
+  line-height: 1.7;
+}
+
+/* الزر */
+
+.transaction-error-btn{
+  padding: 13px 42px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #1e3a8a;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.transaction-error-btn:hover{
+  background: #1e40af;
+
+  transform: translateY(-2px);
+}
+.delete-modal{
+  position:fixed;
+  inset:0;
+
+  background:rgba(15,23,42,0.6);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  z-index:9999;
+}
+
+.delete-box{
+  width:360px;
+
+  background:white;
+
+  border-radius:14px;
+
+  padding:24px;
+
+  box-shadow:0 20px 50px rgba(0,0,0,0.2);
+
+  font-family:system-ui;
+}
+
+.delete-box h2{
+  font-size:18px;
+  color:#0f172a;
+
+  margin-bottom:8px;
+}
+
+.delete-box p{
+  font-size:13px;
+  color:#64748b;
+
+  margin-bottom:16px;
+}
+
+.delete-password{
+  width:100%;
+
+  padding:10px 12px;
+
+  border:1px solid #cbd5e1;
+
+  border-radius:8px;
+
+  outline:none;
+
+  margin-bottom:16px;
+}
+
+.delete-password:focus{
+  border-color:#2563eb;
+}
+
+.delete-actions{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.cancel-delete{
+  flex:1;
+
+  padding:10px;
+
+  border:none;
+
+  background:#e2e8f0;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+  font-weight:600;
+}
+
+.confirm-delete{
+  flex:1;
+
+  padding:10px;
+
+  border:none;
+
+  background:#1e3a8a;
+
+  color:white;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+  font-weight:600;
+
+  transition:0.2s;
+}
+
+.confirm-delete:hover{
+  background:#2563eb;
+}
+
+.delete-error{
+  margin-top:10px;
+
+  color:#dc2626;
+
+  font-size:12px;
+}

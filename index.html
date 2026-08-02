@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Bank</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body >
+<div class="project">
+
+  <h1 class="app-title">Mini Bank</h1>
+  
+
+  <div class="container">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+      <div>
+
+        <h2>Accounts</h2>
+
+        <div class="accounts">
+
+       <!--  <div class="account">
+        
+            <span>Ali</span>
+        
+            <button class="delete-btn">
+              Delete
+            </button>
+        
+          </div>--> 
+        
+        </div>
+
+      </div>
+
+      <button class="create-btn">
+        + Create New Account
+      </button>
+
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+      <div class="current-account">
+        <h2>Current Account:</h2>
+        <h1 class="AccountNameEl "></h1>
+      </div>
+
+      <div class="balance-box">
+        <h3>Current Balance</h3>
+        <h1 class="balance-Value"></h1>
+      </div>
+
+      <!-- ACTIONS -->
+
+      <div class="actions">
+
+        <input type="number" placeholder="Enter amount" class="amount-input">
+
+        <button class="deposit-btn">
+          Deposit
+        </button>
+
+        <button class="withdraw-btn">
+          Withdraw
+        </button>
+
+      </div>
+
+      <!-- TRANSACTIONS -->
+
+
+
+      <h2>Transactions</h2>
+      <div class="transactions">
+
+       
+
+        <!--  <div class="transaction">
+          <span class="deposit-transaction">+500 Deposit</span>
+          <span>Today</span>
+        </div>-->  
+
+    <!--   <div class="transaction">
+          <span class="withdraw-transaction">-200 Withdraw</span>
+          <span>Today</span>
+        </div>--> 
+        
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL -->
+
+  <div  >
+
+   
+
+  </div>
+
+
+
+
+</div>
+<div class="modal hidden">
+
+  <h2>Create New Account</h2>
+
+  <form class="modal-form ">
+
+    <input type="text" placeholder="Full Name" class="full-name">
+
+    <input type="email" placeholder="Email Address" class="email-address">
+
+    <input type="password" placeholder="Password" class="password">
+
+    <input type="number" placeholder="Initial Balance"  class="initial-balance">
+
+    <div class="modal-buttons">
+
+      <button type="button" class="back-btn">
+        Back
+      </button>
+
+      <button type="submit" class="submit-btn">
+        Create Account
+      </button>
+
+    </div>
+
+  </form>
+ 
+
+</div>
+<div class="transaction-error hidden  ">
+
+  <div class="transaction-error-icon">
+    !
+  </div>
+
+  <h2 class="transaction-error-title">
+    Transaction Declined
+  </h2>
+
+  <p class="transaction-error-text">
+    This transaction is not permitted.<br>
+    Please verify the entered amount and try again.
+  </p>
+
+  <button class="transaction-error-btn">
+    OK
+  </button>
+
+</div>
+
+
+<div class="account-exists-error hidden ">
+
+  <div class="account-exists-icon">
+    !
+  </div>
+
+  <h2 class="account-exists-title">
+    Account Already Exists
+  </h2>
+
+  <p class="account-exists-text">
+    The email or password you entered is already used.<br>
+    Please use different credentials to create a new account.
+  </p>
+
+  <button class="account-exists-btn">
+    OK
+  </button>
+
+</div>
+
+<div class="delete-modal hidden">
+
+  <div class="delete-box">
+
+    <h2>Confirm Account Deletion</h2>
+
+    <p>Please enter your password to confirm this action</p>
+
+    <input type="password" class="delete-password" placeholder="Enter password">
+
+    <div class="delete-actions">
+
+      <button class="cancel-delete">Cancel</button>
+
+      <button class="confirm-delete">Confirm</button>
+
+    </div>
+
+    <p class="delete-error hidden">Wrong password</p>
+
+  </div>
+
+</div>
+
+<div class="password-modal hidden ">
+
+  <div class="bank-icon">
+    🔒
+  </div>
+
+  <div class="password-content">
+
+    <h2 class="password-title">
+      Secure Login
+    </h2>
+
+    <p class="password-text">
+      Please enter your password to access this bank account securely.
+    </p>
+
+  </div>
+
+  <input 
+    type="password"
+    placeholder="Enter your password"
+    class="password-input"
+  >
+
+  <div class="password-buttons">
+
+    <button class="cancel-btn">
+      Cancel
+    </button>
+
+    <button class="login-btn">
+      Login
+    </button>
+
+  </div>
+
+</div>
+<div class="password-error hidden">
+
+  <div class="password-error-icon">
+    🔒
+  </div>
+
+  <h2 class="password-error-title">
+    Access Denied
+  </h2>
+
+  <p class="password-error-text">
+    The password you entered is incorrect.<br>
+    Please try again to access this bank account.
+  </p>
+
+  <button class="password-error-btn">
+    OK
+  </button>
+
+</div>
+
+
+<div class="error-box hidden">
+
+  <button class="close-error">
+    ×
+  </button>
+
+  <div class="error-icon">
+    !
+  </div>
+
+  <div class="error-content">
+
+    <h2 class="error-title">
+      Invalid Input
+    </h2>
+
+    <p class="error-text">
+      Please enter valid values before creating the account.
+    </p>
+
+  </div>
+
+  <button class="error-btn">
+    OK
+  </button>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -310,6 +310,7 @@ submitbtn.addEventListener('click',function(e){
       if(initialbalance.value>0){
       
         if(!accounts.some(account=>account.Password === password.value) 
+          
           && !accounts.some(account=>account.EmailAddress === emailaddress.value )){
         
 
@@ -369,6 +370,8 @@ depositBtn.addEventListener('click',function(){
   saveAccounts();
   console.log(currentAccount);
   updateTransactions()
+   amountInputEl.value=''
+ 
  }else{
   transactionError()
  }
@@ -385,6 +388,7 @@ withdrawBtn.addEventListener('click',function(){
     console.log(currentAccount);
     UpdateBalance(currentAccount)
     updateTransactions()
+    amountInputEl.value=''
   }else{
     transactionError()
 
@@ -399,7 +403,7 @@ RendrAccounts();
 if (currentAccount) {
   UpdateAccountName(currentAccount);
   UpdateBalance(currentAccount);
-  updateTransactions(); // 👈 هذا هو المهم
+  updateTransactions(); 
 } else {
   AccountNameEl.textContent = 'Select account';
   balanceValueEl.textContent = '0$';
